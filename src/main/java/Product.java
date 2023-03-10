@@ -1,8 +1,15 @@
-public class Product {
+import java.util.ArrayList;
+
+public class Product extends ProductRepo {
 
     private String id;
     private String name;
+    ArrayList<Product> products = getAllProducts();
 
+    // Constructor
+    public Product(){
+
+    }
     public Product(String id, String name) {
         this.id = id;
         this.name = name;

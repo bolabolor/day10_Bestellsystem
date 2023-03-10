@@ -1,13 +1,19 @@
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class ProductRepo {
 
 
-    private HashMap products;
+    private ArrayList<Product> products = new ArrayList<Product>();
+    public Product addProduct(Product product){
+        products.add(product);
+        return product;
+    }
+
 
 
     // Constructor
-    public ProductRepo(HashMap products) {
+    public ProductRepo(ArrayList<Product> products) {
         this.products = products;
     }
 
@@ -15,13 +21,13 @@ public class ProductRepo {
 
     }
 
-    // Getter
-    public HashMap getProducts() {
+    // Getter und Setter
+
+    public ArrayList<Product> getAllProducts() {
         return products;
     }
 
-    //Setter
-    public void setProducts(HashMap products) {
+    public void setProducts(ArrayList<Product> products) {
         this.products = products;
     }
 
@@ -31,11 +37,13 @@ public class ProductRepo {
                 "products=" + products +
                 '}';
     }
-    public ProductRepo getProduct(HashMap products) {
-        for (int i = 0; i < products.get(); i++) {
-            if (products.equals(products.[i].getProducts())) {
-                return products[i];
+    public Product getProduct(String id) {
+        for (Product product : products) { //Für jedes Produkt in meinen Produkten möchte ich diesdas machen
+            if (product.getId().equals(id)){// Vergleicht id von product mit Ids aus meiner arraylist
+                System.out.println(product);
+                return product;
             }
         }
-
-}
+        throw new NoSuchElementException("Product with ID " + id + " not found." );
+    }
+    }
